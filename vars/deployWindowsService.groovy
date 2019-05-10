@@ -2,7 +2,6 @@
 
 import com.carel.GlobalVars
 
-//def call(String serviceName, String jarName, String installationDir) {
 def call(Map params){
     echo "Installing ${params.jarName}.jar under  ${params.installationDir} as windows service named ${params.serviceName}"
     echo "Download script to install jar as windows service from ${GlobalVars.urlRepositoryWindowScript}"
