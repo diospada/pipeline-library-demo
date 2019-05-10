@@ -8,7 +8,7 @@ def call(Map params){
     echo "Download script to install jar as windows service from ${GlobalVars.urlRepositoryWindowScript}"
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: GlobalVars.urlRepositoryWindowScript]]])
     fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: "windows/*.*", targetLocation: "${params.installationDir}")])
-    dir("${installationDir}"){
+    dir("${params.installationDir}"){
         //uninstall the service if it is already present
         bat ".\\${params.serviceName} uninstall"
         bat ".\\${params.serviceName} install"
