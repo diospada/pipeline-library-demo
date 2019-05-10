@@ -9,8 +9,8 @@ def call(Map params){
     fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: "windows/*.*", targetLocation: "${params.installationDir}")])
     dir("${params.installationDir}"){
         //uninstall the service if it is already present
-        bat ".\\${params.serviceName} uninstall"
-        bat ".\\${params.serviceName} install"
+        bat ".\\${params.serviceName}.exe uninstall"
+        bat ".\\${params.serviceName}.exe install"
     }
 }
 
