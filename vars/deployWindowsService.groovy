@@ -1,11 +1,10 @@
 #!/usr/bin/env groovy
 
-
-
+import com.carel.GlobalVars
 
 def call(String serviceName, String jarName, String installationDir) {
-
-    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/diospada/scriptToDeployJarAsWindowsService.git']]])
+    echo GlobalVars.urlRepositoryWindowScript
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: GlobalVars.urlRepositoryWindowScript]]])
     fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: "windows/*.*", targetLocation: "${installationDir}")])
     echo 'Install as windows service'
     dir("${installationDir}"){
