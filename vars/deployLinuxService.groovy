@@ -8,7 +8,7 @@ import com.carel.GlobalVars
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: GlobalVars.urlRepositoryWindowScript]]])
         fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: "linux/*.*", targetLocation: "${params.installationDir}")])
         //make sure you configure visudo to run this script without typing root password
-        sh "sudo ${params.installationDir}/install_linux_service.sh ${params.serviceName} ${params.installationDir} ${params.jarName}"
+        sh "sudo ${params.installationDir}/deploy_service.sh ${params.serviceName} ${params.installationDir} ${params.jarName}"
  }
 
 
